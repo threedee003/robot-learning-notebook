@@ -1,0 +1,312 @@
+// Book styles. Compiled into both the light and the dark stylesheet,
+// so colours here use the active scheme's variables.
+
+.site-title {
+  font-size: 1.15rem !important;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.rlb-header-tools {
+  display: flex;
+  align-items: center;
+  padding-right: $sp-3;
+  margin-left: auto;
+}
+
+.rlb-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  color: $body-text-color;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: rgba(127, 127, 127, 0.15);
+  }
+
+  svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .rlb-icon-sun { display: none; }
+}
+
+html[data-theme="dark"] .rlb-theme-toggle {
+  .rlb-icon-moon { display: none; }
+  .rlb-icon-sun { display: inline; }
+}
+
+.main-content {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+
+  p, li { max-width: 46rem; }
+
+  h1 { margin-top: 0; }
+
+  h2 {
+    margin-top: 2.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid $border-color;
+  }
+
+  mjx-container[display="true"] {
+    max-width: 100%;
+    min-width: 0 !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25rem 0;
+  }
+
+  kbd {
+    font-family: $mono-font-family;
+    font-size: 0.8em;
+    padding: 0.1em 0.4em;
+    border: 1px solid $border-color;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background: $code-background-color;
+  }
+}
+
+.rlb-sidebar-footer kbd {
+  font-size: 0.75em;
+  padding: 0 0.3em;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+}
+
+.rlb-figure {
+  margin: 1.75rem auto;
+  text-align: center;
+  max-width: 100%;
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid $border-color;
+    background: #fff;
+  }
+
+  figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.875rem;
+    color: $grey-dk-000;
+    line-height: 1.5;
+  }
+}
+
+.rlb-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
+  }
+}
+
+.rlb-codefile {
+  margin: 1.5rem 0;
+
+  .rlb-codefile-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $mono-font-family;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid $border-color;
+    border-bottom: 0;
+    border-radius: 6px 6px 0 0;
+    background: $code-background-color;
+
+    a { font-family: $body-font-family; }
+  }
+
+  div.highlighter-rouge {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  div.highlighter-rouge,
+  div.highlighter-rouge div.highlight,
+  div.highlighter-rouge pre.highlight {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+div.highlighter-rouge {
+  position: relative;
+
+  pre.highlight code {
+    tab-size: 6;
+  }
+
+  .rlb-lang-tag {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.35rem;
+    font-family: $mono-font-family;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+}
+
+.rlb-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    padding: 0.85rem 1rem;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+
+    &:hover { border-color: $link-color; }
+  }
+
+  .rlb-pager-next {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .rlb-pager-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $grey-dk-000;
+  }
+
+  .rlb-pager-title { font-weight: 600; }
+}
+
+.rlb-chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+
+  a {
+    display: block;
+    padding: 1rem 1.1rem;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    text-decoration: none;
+    color: $body-text-color;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      border-color: $link-color;
+      transform: translateY(-2px);
+    }
+  }
+
+  .rlb-chapter-num {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $link-color;
+    margin-bottom: 0.25rem;
+  }
+
+  .rlb-chapter-title {
+    display: block;
+    font-weight: 600;
+    color: $body-heading-color;
+    margin-bottom: 0.35rem;
+  }
+
+  .rlb-chapter-blurb {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+.rlb-meta {
+  font-size: 0.85rem;
+  color: $grey-dk-000;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 50rem) {
+  .rlb-pager { grid-template-columns: 1fr; }
+  .rlb-pager .rlb-pager-next { grid-column: 1; }
+}
+
+.main-content {
+  div.highlighter-rouge,
+  figure.highlight {
+    line-height: 1.45;
+  }
+
+  div.highlighter-rouge div.highlight,
+  figure.highlight pre {
+    border-color: $border-color;
+  }
+
+  pre.highlight,
+  pre.highlight code {
+    line-height: 1.45;
+    font-size: 0.82rem;
+  }
+}
+
+.rlb-codefile div.highlighter-rouge div.highlight {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+@if $color-scheme == dark {
+  $rlb-callouts: (
+    definition: lighten($blue-000, 8%),
+    intuition: lighten($purple-000, 15%),
+    key: $green-000,
+    warning: $red-000,
+    exercise: $yellow-100,
+    note: lighten($blue-000, 8%),
+  );
+
+  @each $name, $c in $rlb-callouts {
+    p.#{$name},
+    blockquote.#{$name} {
+      border-left-color: $c;
+      background-color: rgba(255, 255, 255, 0.03);
+
+      &::before { color: $c; }
+      > .#{$name}-title { color: $c; }
+    }
+  }
+}
