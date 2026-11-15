@@ -8,8 +8,8 @@ description: >-
   A hands-on technical book on generative policies for robotics.
   Diffusion Policy, flow matching, and the engineering that makes them work.
 author: Tribikram
-baseurl: ""            # e.g. "/robot-learning-book" when hosted at username.github.io/robot-learning-book
-url: ""                # e.g. "https://username.github.io"
+baseurl: "/robot-learning-notebook"            # e.g. "/robot-learning-book" when hosted at username.github.io/robot-learning-book
+url: "https://threedee003.github.io"                # e.g. "https://username.github.io"
 lang: en-US
 
 # Link shown at the top right of every page. Remove or edit freely.
