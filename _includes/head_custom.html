@@ -1,0 +1,54 @@
+<script>
+  (function () {
+    var KEY = "rlb-theme";
+    var fallback = "{{ site.book_default_scheme | default: 'auto' }}";
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var theme = stored || (fallback === "auto" ? (prefersDark ? "dark" : "light") : fallback);
+    var link = document.querySelector('link[rel="stylesheet"]');
+    if (link) { link.setAttribute("href", "{{ '/assets/css/just-the-docs-' | relative_url }}" + theme + ".css"); }
+    document.documentElement.setAttribute("data-theme", theme);
+    window.rlbTheme = {
+      key: KEY,
+      get: function () { return document.documentElement.getAttribute("data-theme") || "light"; },
+      set: function (t) {
+        var l = document.querySelector('link[rel="stylesheet"]');
+        if (l) { l.setAttribute("href", "{{ '/assets/css/just-the-docs-' | relative_url }}" + t + ".css"); }
+        document.documentElement.setAttribute("data-theme", t);
+        try { localStorage.setItem(KEY, t); } catch (e) {}
+        document.dispatchEvent(new CustomEvent("rlb:themechange", { detail: t }));
+      }
+    };
+  })();
+</script>
+
+{% if page.math != false %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [["\\(", "\\)"]],
+      displayMath: [["\\[", "\\]"]],
+      processEscapes: true,
+      tags: "ams",
+      macros: {
+        E: "\\mathbb{E}",
+        R: "\\mathbb{R}",
+        N: "\\mathcal{N}",
+        bx: "\\mathbf{x}",
+        ba: "\\mathbf{a}",
+        bo: "\\mathbf{o}",
+        bA: "\\mathbf{A}",
+        bO: "\\mathbf{O}",
+        beps: "\\boldsymbol{\\epsilon}"
+      }
+    },
+    options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] },
+    chtml: { scale: 1.0 },
+    loader: { paths: { mathjax: "{{ '/assets/js/vendor/mathjax' | relative_url }}" } }
+  };
+</script>
+<script defer id="MathJax-script" src="{{ '/assets/js/vendor/mathjax/tex-mml-chtml.js' | relative_url }}"></script>
+{% endif %}
+
+<script defer src="{{ '/assets/js/book.js' | relative_url }}"></script>

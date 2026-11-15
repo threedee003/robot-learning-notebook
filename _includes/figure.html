@@ -1,0 +1,13 @@
+{%- comment -%}
+  Usage:
+  {% include figure.html src="/assets/media/ch01/plot.png" alt="What the image shows" caption="Optional caption" width="80%" %}
+  Works for .png .jpg .svg .gif
+{%- endcomment -%}
+{%- assign fig_src = include.src -%}
+{%- unless fig_src contains "://" -%}{%- assign fig_src = include.src | relative_url -%}{%- endunless -%}
+<figure class="rlb-figure{% if include.class %} {{ include.class }}{% endif %}">
+  <img src="{{ fig_src }}" alt="{{ include.alt | default: include.caption | escape }}" loading="lazy"{% if include.width %} style="width: {{ include.width }};"{% endif %}>
+  {%- if include.caption %}
+  <figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>
+  {%- endif %}
+</figure>

@@ -1,0 +1,22 @@
+{%- comment -%}
+  Local file:  {% include video.html src="/assets/media/ch02/denoise.mp4" caption="..." %}
+  YouTube:     {% include video.html youtube="VIDEO_ID" caption="..." %}
+  Options:     autoplay=true (also muts and loops), poster="/assets/media/x.png", width="80%"
+{%- endcomment -%}
+<figure class="rlb-figure rlb-video"{% if include.width %} style="width: {{ include.width }};"{% endif %}>
+  {%- if include.youtube %}
+  <div class="rlb-embed">
+    <iframe src="https://www.youtube-nocookie.com/embed/{{ include.youtube }}" title="{{ include.caption | default: 'Video' | escape }}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  {%- else %}
+  {%- assign vid_src = include.src -%}
+  {%- unless vid_src contains "://" -%}{%- assign vid_src = include.src | relative_url -%}{%- endunless -%}
+  <video controls playsinline preload="metadata"{% if include.autoplay %} autoplay muted loop{% endif %}{% if include.poster %} poster="{{ include.poster | relative_url }}"{% endif %}>
+    <source src="{{ vid_src }}" type="video/{% if vid_src contains '.webm' %}webm{% else %}mp4{% endif %}">
+    Your browser cannot play this video. <a href="{{ vid_src }}">Download it</a>.
+  </video>
+  {%- endif %}
+  {%- if include.caption %}
+  <figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>
+  {%- endif %}
+</figure>

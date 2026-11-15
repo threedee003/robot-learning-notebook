@@ -1,0 +1,16 @@
+{%- comment -%}
+  Show a whole file from _includes/code/ as a highlighted block with a filename tab.
+  {% include codefile.html file="ch03_unet.py" %}
+  Optional: lang="python" (default python)
+{%- endcomment -%}
+{%- capture rlb_code -%}{% include code/{{ include.file }} %}{%- endcapture -%}
+{%- assign rlb_lang = include.lang | default: "python" -%}
+{%- capture rlb_fenced -%}
+```{{ rlb_lang }}
+{{ rlb_code | strip }}
+```
+{%- endcapture -%}
+<div class="rlb-codefile">
+<div class="rlb-codefile-name"><span>{{ include.file }}</span><a href="{{ site.gh_edit_repository }}/blob/{{ site.gh_edit_branch }}/_includes/code/{{ include.file }}" target="_blank" rel="noopener">view on GitHub</a></div>
+{{ rlb_fenced | markdownify }}
+</div>
