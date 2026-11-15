@@ -21,7 +21,7 @@ aux_links_new_tab: true
 # "Edit this page" link in the footer. Set your repo, or set gh_edit_link to false.
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/threedee003/robot-learning-book"
+gh_edit_repository: "https://github.com/threedee003/robot-learning-notebook"
 gh_edit_branch: "main"
 gh_edit_view_mode: "edit"
 
