@@ -15,7 +15,7 @@ lang: en-US
 # Link shown at the top right of every page. Remove or edit freely.
 aux_links:
   "Source on GitHub":
-    - "https://github.com/threedee003/robot-learning-book"
+    - "https://github.com/threedee003/robot-learning-notebook"
 aux_links_new_tab: true
 
 # "Edit this page" link in the footer. Set your repo, or set gh_edit_link to false.
