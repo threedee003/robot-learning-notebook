@@ -189,6 +189,99 @@ def fig_flow_paths():
       plt.close(fig)
 
 
+def fig_singular_values():
+      from kin_core import Q_NOMINAL, jacobian_world
+      q4 = np.linspace(-120, 120, 481)
+      s_min, w = [], []
+      for a in q4:
+            q = Q_NOMINAL.copy()
+            q[3] = np.deg2rad(a)
+            s = np.linalg.svd(jacobian_world(q), compute_uv=False)
+            s_min.append(s[-1])
+            w.append(np.prod(s))
+      fig, ax = plt.subplots(figsize=(6, 3))
+      ax.plot(q4, s_min, color=LEFT, label=r"$\sigma_{\min}(J)$")
+      ax.plot(q4, w, color=RIGHT, label=r"$w(q) = \prod_i \sigma_i$")
+      ax.axvline(0, color=GREY, lw=0.8, ls="--")
+      ax.set_xlabel("elbow angle $q_4$ [deg], other joints at $q_{nom}$")
+      ax.legend(frameon=False)
+      fig.tight_layout()
+      fig.savefig(out("ch07", "elbow_singularity.png"))
+      plt.close(fig)
+
+
+def fig_ik():
+      from kin_core import Q_NOMINAL, fk
+      from ch07_ik import solve_ik, teleop
+      T_hard = fk(np.deg2rad([40, 50, -30, 1, 20, -40, 10]))
+      fig, ax = plt.subplots(figsize=(5, 3))
+      for method, color in (("pinv", INK), ("dls", RIGHT), ("lm", LEFT)):
+            errs = solve_ik(T_hard, Q_NOMINAL, method=method, history=True)[3]
+            ax.semilogy(errs, color=color, label=method)
+      ax.set_xlabel("iteration")
+      ax.set_ylabel(r"$\Vert e \Vert$")
+      ax.legend(frameon=False)
+      fig.tight_layout()
+      fig.savefig(out("ch07", "ik_convergence.png"))
+      plt.close(fig)
+
+      V_des = np.array([0, 0, 0, 0, 0, 0.10])
+      q0 = np.deg2rad([0, 20, 0, -50, 0, 60, 0])
+      fig, axes = plt.subplots(1, 2, figsize=(8, 3))
+      for name, color, label in (("pinv", FAIL, "pseudo-inverse"), ("qp", LEFT, "constrained QP")):
+            log = teleop(name, q0, V_des)
+            axes[0].plot(log[:, 0], log[:, 1], color=color, label=label)
+            axes[1].semilogy(log[:, 0], log[:, 2], color=color, label=label)
+      axes[0].set_xlabel("time [s]")
+      axes[0].set_ylabel("hand height [m]")
+      axes[1].axhline(1.0, color=GREY, lw=0.8, ls="--")
+      axes[1].set_xlabel("time [s]")
+      axes[1].set_ylabel(r"$\max_i |v_i| / v_{i,\max}$")
+      axes[0].legend(frameon=False)
+      fig.tight_layout()
+      fig.savefig(out("ch07", "diffik_singularity.png"))
+      plt.close(fig)
+
+
+def fig_energy():
+      from dyn_core import make_iiwa
+      from ch08_dynamics import free_fall
+      arm = make_iiwa()
+      q0 = np.deg2rad([0, 60, 0, -30, 0, 45, 0])
+      fig, ax = plt.subplots(figsize=(5, 3))
+      for method, color in (("euler", FAIL), ("semi-implicit", RIGHT), ("rk4", LEFT)):
+            d = np.abs(free_fall(arm, q0, method)) + 1e-14
+            ax.semilogy(np.arange(1, len(d) + 1) * 1e-3, d, color=color, label=method)
+      ax.set_xlabel("time [s]")
+      ax.set_ylabel("|energy drift| [J]")
+      ax.legend(frameon=False)
+      fig.tight_layout()
+      fig.savefig(out("ch08", "energy_drift.png"))
+      plt.close(fig)
+
+
+def fig_control():
+      from dyn_core import make_iiwa
+      from ch08_control import PD, ComputedTorque, simulate
+      plant = make_iiwa()
+      runs = (
+            ("PD", PD(plant, False), FAIL),
+            ("PD + gravity", PD(plant, True), RIGHT),
+            ("computed torque, -20% mass", ComputedTorque(make_iiwa(mass_scale=0.8)), GREY),
+            ("computed torque", ComputedTorque(plant), LEFT),
+      )
+      fig, ax = plt.subplots(figsize=(6, 3))
+      for name, ctrl, color in runs:
+            e = np.rad2deg(np.linalg.norm(simulate(plant, ctrl), axis=1)) + 1e-6
+            ax.semilogy(np.arange(len(e)) * 1e-3, e, color=color, label=name)
+      ax.set_xlabel("time [s]")
+      ax.set_ylabel(r"$\Vert q_{ref} - q \Vert$ [deg]")
+      ax.legend(frameon=False, fontsize=8)
+      fig.tight_layout()
+      fig.savefig(out("ch08", "tracking.png"))
+      plt.close(fig)
+
+
 if __name__ == "__main__":
       jobs = {
             "demos": fig_demos,
@@ -196,6 +289,10 @@ if __name__ == "__main__":
             "ddpm": fig_ddpm_animation,
             "dp": fig_dp_toy,
             "flow": fig_flow_paths,
+            "kin": fig_singular_values,
+            "ik": fig_ik,
+            "energy": fig_energy,
+            "ctrl": fig_control,
       }
       selected = sys.argv[1:] or list(jobs)
       for name in selected:

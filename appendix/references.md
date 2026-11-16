@@ -63,3 +63,41 @@ Every work cited in the book, grouped by topic. Each chapter also lists its own 
 ## Evaluation
 
 - E. B. Wilson. *Probable Inference, the Law of Succession, and Statistical Inference.* Journal of the American Statistical Association 22(158), 1927.
+
+## Manipulator kinematics
+
+- R. Tedrake. *Robotic Manipulation: Perception, Planning, and Control.* Course notes for MIT 6.4210, 2024. [manipulation.mit.edu](https://manipulation.mit.edu/pick.html)
+- Robotic Systems Lab, ETH Zurich (M. Hutter et al.). *Robot Dynamics Lecture Notes.* HS 2017. [PDF](https://ethz.ch/content/dam/ethz/special-interest/mavt/robotics-n-intelligent-systems/rsl-dam/documents/RobotDynamics2017/RD_HS2017script.pdf)
+- G. Zardini, J. Lorenzetti, M. Pavone. *Principles of Robot Autonomy.* Stanford lecture notes, 2024. [PDF](https://stanfordasl.github.io/PoRA-I/aa174a_aut2425/pdfs/AA_PoRA_lecture_notes_2425.pdf)
+- K. M. Lynch, F. C. Park. *Modern Robotics: Mechanics, Planning, and Control.* Cambridge University Press, 2017. [modernrobotics.org](http://modernrobotics.org)
+- R. M. Murray, Z. Li, S. S. Sastry. *A Mathematical Introduction to Robotic Manipulation.* CRC Press, 1994.
+- B. Siciliano, L. Sciavicco, L. Villani, G. Oriolo. *Robotics: Modelling, Planning and Control.* Springer, 2009.
+- J. J. Craig. *Introduction to Robotics: Mechanics and Control.* 3rd edition, Pearson, 2005.
+- J. Denavit, R. S. Hartenberg. *A Kinematic Notation for Lower-Pair Mechanisms Based on Matrices.* Journal of Applied Mechanics 22(2), 1955.
+- R. W. Brockett. *Robotic Manipulators and the Product of Exponentials Formula.* Mathematical Theory of Networks and Systems, 1984.
+- J. Haviland, P. Corke. *Manipulator Differential Kinematics, Part I.* IEEE Robotics and Automation Magazine, 2023. [arXiv:2207.01796](https://arxiv.org/abs/2207.01796)
+- T. Yoshikawa. *Manipulability of Robotic Mechanisms.* International Journal of Robotics Research 4(2), 1985.
+- D. L. Pieper. *The Kinematics of Manipulators under Computer Control.* PhD thesis, Stanford University, 1968.
+- Y. Nakamura, H. Hanafusa. *Inverse Kinematic Solutions with Singularity Robustness for Robot Manipulator Control.* Journal of Dynamic Systems, Measurement, and Control 108(3), 1986.
+- C. W. Wampler. *Manipulator Inverse Kinematic Solutions Based on Vector Formulations and Damped Least-Squares Methods.* IEEE Transactions on Systems, Man, and Cybernetics 16(1), 1986.
+- T. Sugihara. *Solvability-Unconcerned Inverse Kinematics by the Levenberg-Marquardt Method.* IEEE Transactions on Robotics 27(5), 2011.
+- S. R. Buss. *Introduction to Inverse Kinematics with Jacobian Transpose, Pseudoinverse and Damped Least Squares Methods.* Technical report, UC San Diego, 2004.
+
+## Manipulator dynamics and control
+
+- R. Tedrake. *Underactuated Robotics: Algorithms for Walking, Running, Swimming, Flying, and Manipulation.* Course notes for MIT 6.832, 2024. [underactuated.mit.edu](https://underactuated.mit.edu/multibody.html)
+- R. Featherstone. *Rigid Body Dynamics Algorithms.* Springer, 2008.
+- J. Y. S. Luh, M. W. Walker, R. P. C. Paul. *On-Line Computational Scheme for Mechanical Manipulators.* Journal of Dynamic Systems, Measurement, and Control 102(2), 1980.
+- M. W. Walker, D. E. Orin. *Efficient Dynamic Computer Simulation of Robotic Mechanisms.* Journal of Dynamic Systems, Measurement, and Control 104(3), 1982.
+- M. W. Spong, S. Hutchinson, M. Vidyasagar. *Robot Modeling and Control.* 2nd edition, Wiley, 2020.
+- H. Asada, J.-J. E. Slotine. *Robot Analysis and Control.* Wiley, 1986.
+- J.-J. E. Slotine, W. Li. *Applied Nonlinear Control.* Prentice Hall, 1991.
+- J.-J. E. Slotine, W. Li. *On the Adaptive Control of Robot Manipulators.* International Journal of Robotics Research 6(3), 1987.
+- M. Takegaki, S. Arimoto. *A New Feedback Method for Dynamic Control of Manipulators.* Journal of Dynamic Systems, Measurement, and Control 103(2), 1981.
+- O. Khatib. *A Unified Approach for Motion and Force Control of Robot Manipulators: The Operational Space Formulation.* IEEE Journal on Robotics and Automation 3(1), 1987.
+- N. Hogan. *Impedance Control: An Approach to Manipulation.* Journal of Dynamic Systems, Measurement, and Control 107(1), 1985.
+- C. G. Atkeson, C. H. An, J. M. Hollerbach. *Estimation of Inertial Parameters of Manipulator Loads and Links.* International Journal of Robotics Research 5(3), 1986.
+- H. K. Khalil. *Nonlinear Systems.* 3rd edition, Prentice Hall, 2002.
+- E. Hairer, C. Lubich, G. Wanner. *Geometric Numerical Integration.* 2nd edition, Springer, 2006.
+- E. Todorov, T. Erez, Y. Tassa. *MuJoCo: A Physics Engine for Model-Based Control.* IROS 2012.
+- J. Carpentier et al. *The Pinocchio C++ Library.* IEEE/SICE International Symposium on System Integration, 2019.

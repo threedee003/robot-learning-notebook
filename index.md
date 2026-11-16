@@ -50,11 +50,21 @@ Generative policies for robots, built from first principles. Each chapter derive
     <span class="rlb-chapter-title">From Simulation to Robot</span>
     <span class="rlb-chapter-blurb">Latency, temporal ensembling, action representations, and how to evaluate a policy honestly.</span>
   </a>
+  <a href="{{ '/chapters/07-manipulator-kinematics/' | relative_url }}">
+    <span class="rlb-chapter-num">Chapter 7</span>
+    <span class="rlb-chapter-title">Manipulator Kinematics</span>
+    <span class="rlb-chapter-blurb">Rotations, screws, DH and product of exponentials, Jacobians, singularities, and inverse kinematics that survives them.</span>
+  </a>
+  <a href="{{ '/chapters/08-manipulator-dynamics/' | relative_url }}">
+    <span class="rlb-chapter-num">Chapter 8</span>
+    <span class="rlb-chapter-title">Manipulator Dynamics</span>
+    <span class="rlb-chapter-blurb">The manipulator equation, recursive Newton Euler, energy checks, and computed torque and operational space control.</span>
+  </a>
 </div>
 
 ## How to read this book
 
-Read the chapters in order the first time. Chapters 2 and 4 are self-contained introductions to the generative models. Chapters 3 and 5 turn those models into robot policies. If you already know diffusion models, you can skip straight to Chapter 3.
+Read the chapters in order the first time. Chapters 2 and 4 are self-contained introductions to the generative models. Chapters 3 and 5 turn those models into robot policies. If you already know diffusion models, you can skip straight to Chapter 3. Chapters 7 and 8 stand on their own. They build the kinematic and dynamic models of a 7 joint arm that sit underneath every policy in the earlier chapters, and need numpy and scipy only.
 
 Every code listing on this site is a real file in `_includes/code/`. The book page and the runnable script are the same file, so they cannot drift apart. To run them, clone the repository and use the commands below.
 
